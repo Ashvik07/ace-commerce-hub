@@ -1,40 +1,40 @@
-## Ace Commerce Club — Website Plan
+## Integrate ACE logo + real Apex Team roster
 
-A descriptive, informative site for your school's commerce club. Modern minimal aesthetic in black, white, and grey. Built across 10 routes with placeholder content you can swap later.
+Two assets to wire into the site: the official ACE logo and the full Apex Team org chart with real names.
 
-### Design direction
-- **Palette**: pure white background, near-black text, layered greys for surfaces and dividers
-- **Typography**: clean geometric sans (Inter for body, tighter display sans for headings)
-- **Feel**: business-school polish — generous whitespace, sharp grid, subtle hairline borders, restrained motion
-- **Motion**: scroll-triggered fade/slide on home montage (Zipline-style reveal), hover lifts on cards
+### 1. Logo integration
+- Save upload to `src/assets/ace-logo.png` and `public/favicon.png`.
+- **Header**: replace text-only "ACE" with logo + wordmark (h ~28–32px).
+- **Footer**: add logo above the wordmark.
+- **Home hero**: subtle logo lockup above headline.
+- **SEO**: wire logo as default `og:image` / `twitter:image` + favicon link in `__root.tsx`.
+- **About page**: add "ACE — Alliance of Commerce and Entrepreneurship, Delhi Public School Dwarka" subtitle (from the org chart header) so the full club name is on record.
 
-### Pages (each its own route for SEO)
+### 2. Apex Team roster (replaces placeholders in `src/lib/placeholders.ts`)
 
-1. **Home (`/`)** — Hero with club name + tagline, animated scroll montage of past events, achievements counter strip, upcoming-events teaser, and an **email signup** (wired to Lovable Cloud) for updates and the ACEit issue
-2. **About (`/about`)** — Vision, mission, story paragraphs + team photo placeholder
-3. **Resources (`/resources`)** — "Check these out" grid: Mock Stock, Idea Pitching, M&A, Quiz, Crossword, Design
-4. **Projects (`/projects`)** — Grid of competition projects with description + outcome
-5. **Events (`/events`)** — Upcoming events list (date, title, description) + past events archive
-6. **Members (`/members`)** — Grid of current members with photo + title
-7. **Alumni (`/alumni`)** — Alumni cards by batch year (inspired by exunclan.com/alumni)
-8. **Faculty (`/faculty`)** — Teachers with club role + email
-9. **Contact (`/contact`)** — Contact form, location, social links (inspired by coreisus.com/contact)
-10. **ACEit (`/aceit`)** — Quarterly issue showcase with case studies, achievements, recent events
+Structured into the existing Members page with clear hierarchy sections:
 
-Shared header with nav + footer on every route. Each route gets unique `<head>` metadata for SEO.
+**Directors** — Anirudh Goyal · Jai Sehgal · Drishti Jain
+**Joint Directors** — Ridhaan Malhotra · Jeevansh Grover
+**Deputy Directors** — Naysa Grover · Anoushka Nandini
 
-### Backend (Lovable Cloud)
-- **`subscribers` table**: stores email signups (email, created_at) with RLS allowing public insert only
-- Email form validates with Zod, inserts via server function, shows success toast
+**Department Heads (6 departments, 3 members each):**
+- **Finance** — Atharv Bansal, Manit Chopra, Tejasvir
+- **Marketing** — Aadhya Manglani, Nayanika Bajaj, Sejal Nair
+- **Entrepreneurship** — Mysha Moin, Yashika Oberoi, Sharanya Singh
+- **Tech** — Shagun Bhadwar, Ashvik Gupta, Salome Tripathy
+- **Media** — Aarush Goyal, Aaradhya Koslia, Armaan Nagpal
+- **Hawkeye** — Anya Singh, Falak Khanna, Anika Nashier
 
-### Technical notes
-- TanStack Start file-based routing in `src/routes/`
-- Design tokens in `src/styles.css` (oklch B/W/grey scale)
-- Reusable components: `Header`, `Footer`, `SectionHeading`, `MemberCard`, `EventCard`, `EmailSignup`
-- All placeholder photos generated as neutral grey portraits/event shots
-- Animations via Tailwind + Motion (lightweight)
+### 3. Members page restructure (`src/routes/members.tsx`)
+- Top section: **Leadership** — three tiers (Directors → Joint Directors → Deputy Directors), each rendered as cards with name + role.
+- Below: **Departments** — 6 department blocks, each showing department name as a heading and the three members listed underneath.
+- Keep the existing Modern Minimal styling (hairline borders, generous whitespace, monochrome).
+- No photos for now (none provided) — clean typographic cards with initials monogram in the existing greyscale style.
 
-### Out of scope (for now)
-- Actual member/event content (placeholders only)
-- ACEit PDF uploads / CMS
-- Admin dashboard to manage signups (you'll export from Cloud)
+### Out of scope
+- Roles for individual department members (e.g. who is "Head" vs "Member") — listed as a flat trio per department since the chart doesn't distinguish. Tell me if there's a hierarchy within each department.
+- Faculty / Alumni rosters — still placeholders until you share them.
+- Photos of members.
+
+Approve to implement.

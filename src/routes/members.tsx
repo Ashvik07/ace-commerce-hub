@@ -1,15 +1,15 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Layout } from "@/components/site/Layout";
 import { PageHero } from "@/components/site/PageHero";
-import { members } from "@/lib/placeholders";
+import { leadership, departments } from "@/lib/placeholders";
 
 export const Route = createFileRoute("/members")({
   head: () => ({
     meta: [
-      { title: "Members — ACE" },
-      { name: "description", content: "Meet the current members of ACE — the students running the commerce club." },
-      { property: "og:title", content: "Members — ACE" },
-      { property: "og:description", content: "Current student members of ACE." },
+      { title: "Apex Team — ACE" },
+      { name: "description", content: "Meet the Apex Team of ACE — Directors, Joint Directors, Deputy Directors, and the six department teams." },
+      { property: "og:title", content: "Apex Team — ACE" },
+      { property: "og:description", content: "Directors and department teams running ACE this year." },
     ],
     links: [{ rel: "canonical", href: "/members" }],
   }),
@@ -17,27 +17,84 @@ export const Route = createFileRoute("/members")({
 });
 
 function initials(name: string) {
-  return name.split(" ").map((n) => n[0]).slice(0, 2).join("");
+  return name.split(" ").map((n) => n[0]).slice(0, 2).join("").toUpperCase();
+}
+
+function PersonCard({ name, role }: { name: string; role: string }) {
+  return (
+    <article className="bg-background p-6">
+      <div className="aspect-square mb-4 bg-surface-2 grid place-items-center font-display text-4xl font-bold text-muted-foreground">
+        {initials(name)}
+      </div>
+      <div className="font-display font-semibold text-lg leading-tight">{name}</div>
+      <div className="text-sm text-muted-foreground mt-1">{role}</div>
+    </article>
+  );
+}
+
+function Tier({ label, people }: { label: string; people: { name: string; role: string }[] }) {
+  return (
+    <div className="mb-16">
+      <div className="flex items-baseline justify-between mb-6 pb-3 border-b border-hairline">
+        <h3 className="font-display text-2xl font-semibold">{label}</h3>
+        <span className="text-xs uppercase tracking-widest text-muted-foreground tabular-nums">
+          {String(people.length).padStart(2, "0")}
+        </span>
+      </div>
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-px bg-hairline border border-hairline">
+        {people.map((p) => (
+          <PersonCard key={p.name} name={p.name} role={p.role} />
+        ))}
+      </div>
+    </div>
+  );
 }
 
 function Members() {
   return (
     <Layout>
       <PageHero
-        eyebrow="The current cohort"
-        title="The students running ACE this year."
+        eyebrow="The Apex Team"
+        title="The students leading ACE this year."
       />
+
       <section className="container-page py-20">
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-px bg-hairline border border-hairline">
-          {members.map((m) => (
-            <article key={m.name} className="bg-background p-6">
-              <div className="aspect-square mb-4 bg-surface-2 grid place-items-center font-display text-4xl font-bold text-muted-foreground">
-                {initials(m.name)}
+        <header className="mb-12 max-w-2xl">
+          <div className="text-xs uppercase tracking-widest text-muted-foreground mb-3">Leadership</div>
+          <h2 className="font-display text-3xl md:text-4xl font-semibold leading-tight">
+            Directors, Joint Directors, and Deputy Directors.
+          </h2>
+        </header>
+
+        <Tier label="Directors" people={leadership.directors} />
+        <Tier label="Joint Directors" people={leadership.jointDirectors} />
+        <Tier label="Deputy Directors" people={leadership.deputyDirectors} />
+      </section>
+
+      <section className="container-page pb-24">
+        <header className="mb-12 max-w-2xl">
+          <div className="text-xs uppercase tracking-widest text-muted-foreground mb-3">Departments</div>
+          <h2 className="font-display text-3xl md:text-4xl font-semibold leading-tight">
+            Six departments, eighteen members.
+          </h2>
+          <p className="mt-3 text-muted-foreground">
+            Finance, Marketing, Entrepreneurship, Tech, Media, and Hawkeye — each team owns a slice of how ACE runs.
+          </p>
+        </header>
+
+        <div className="space-y-16">
+          {departments.map((dept) => (
+            <div key={dept.name}>
+              <div className="flex items-baseline justify-between mb-6 pb-3 border-b border-hairline">
+                <h3 className="font-display text-2xl font-semibold">{dept.name}</h3>
+                <span className="text-xs uppercase tracking-widest text-muted-foreground">Department</span>
               </div>
-              <div className="font-display font-semibold text-lg leading-tight">{m.name}</div>
-              <div className="text-sm text-muted-foreground mt-1">{m.role}</div>
-              <div className="text-xs text-muted-foreground mt-2 tabular-nums">Class {m.batch}</div>
-            </article>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-hairline border border-hairline">
+                {dept.members.map((name) => (
+                  <PersonCard key={name} name={name} role={`${dept.name} Department`} />
+                ))}
+              </div>
+            </div>
           ))}
         </div>
       </section>
