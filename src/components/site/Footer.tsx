@@ -1,13 +1,13 @@
 import { Link } from "@tanstack/react-router";
+import logo from "@/assets/image-removebg-preview.png";
 
 export function Footer() {
   return (
     <footer className="border-t border-hairline mt-24">
       <div className="container-page py-12 grid gap-10 md:grid-cols-3">
         <div>
-          <div className="flex items-center gap-2 font-display text-lg font-bold">
-            <span className="grid h-7 w-7 place-items-center bg-foreground text-background text-xs font-bold">A</span>
-            ACE
+          <div className="flex items-center gap-2">
+            <img src={logo} alt="ACE" className="h-8 w-auto" />
           </div>
           <p className="mt-3 text-sm text-muted-foreground max-w-xs">
             The commerce club exploring markets, finance, and entrepreneurship — one idea at a time.

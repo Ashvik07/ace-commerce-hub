@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
+import logo from "@/assets/image-removebg-preview.png";
 
 const nav = [
   { to: "/", label: "Home" },
@@ -21,8 +22,7 @@ export function Header() {
     <header className="sticky top-0 z-50 border-b border-hairline bg-background/80 backdrop-blur-md">
       <div className="container-page flex h-16 items-center justify-between">
         <Link to="/" className="flex items-center gap-2 font-display text-lg font-bold tracking-tight">
-          <span className="grid h-7 w-7 place-items-center bg-foreground text-background text-xs font-bold">A</span>
-          ACE
+          <img src={logo} alt="ACE" className="h-7 w-auto" />
         </Link>
         <nav className="hidden lg:flex items-center gap-7 text-sm">
           {nav.map((n) => (
