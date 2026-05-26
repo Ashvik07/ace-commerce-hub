@@ -1,14 +1,15 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Layout } from "@/components/site/Layout";
 import { PageHero } from "@/components/site/PageHero";
+import { resources } from "@/lib/placeholders";
 
 export const Route = createFileRoute("/resources")({
   head: () => ({
     meta: [
       { title: "Resources — ACE" },
-      { name: "description", content: "Guides, frameworks, and toolkits from ACE." },
+      { name: "description", content: "Long-form articles from the inaugural ACE magazine — Amul, cryptocurrency, careers in commerce, and more." },
       { property: "og:title", content: "Resources — ACE" },
-      { property: "og:description", content: "Guides and toolkits from ACE." },
+      { property: "og:description", content: "Articles from the inaugural ACE magazine." },
     ],
     links: [{ rel: "canonical", href: "/resources" }],
   }),
@@ -19,11 +20,25 @@ function Resources() {
   return (
     <Layout>
       <PageHero
-        eyebrow="Toolkits"
-        title="Resources."
+        eyebrow="The Student Ledger"
+        title="Articles from the team."
+        description="Selected long-form pieces from the inaugural ACE magazine."
       />
-      <section className="container-page py-20">
-        <p className="text-muted-foreground">Details coming soon.</p>
+      <section className="container-page py-20 space-y-px">
+        {resources.map((r, i) => (
+          <article key={r.title} className="grid md:grid-cols-12 gap-6 py-10 border-b border-hairline items-start">
+            <div className="md:col-span-1 text-sm tabular-nums text-muted-foreground">
+              {String(i + 1).padStart(2, "0")}
+            </div>
+            <div className="md:col-span-4">
+              <h3 className="font-display text-2xl font-semibold tracking-tight leading-tight">{r.title}</h3>
+              <div className="text-xs uppercase tracking-widest text-muted-foreground mt-3">
+                {r.authors ?? r.author}
+              </div>
+            </div>
+            <p className="md:col-span-7 text-muted-foreground leading-relaxed">{r.description}</p>
+          </article>
+        ))}
       </section>
     </Layout>
   );
