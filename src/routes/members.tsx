@@ -23,14 +23,12 @@ function initials(name: string) {
 function PersonCard({ name, role }: { name: string; role: string }) {
   return (
     <article className="bg-background p-6">
-      <div className="aspect-square mb-4 bg-surface-2 grid place-items-center font-display text-4xl font-bold text-muted-foreground">
-        {initials(name)}
-      </div>
       <div className="font-display font-semibold text-lg leading-tight">{name}</div>
       <div className="text-sm text-muted-foreground mt-1">{role}</div>
     </article>
   );
 }
+
 
 function Tier({ label, people }: { label: string; people: { name: string; role: string }[] }) {
   return (
