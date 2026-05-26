@@ -16,9 +16,8 @@ export const Route = createFileRoute("/members")({
   component: Members,
 });
 
-function initials(name: string) {
-  return name.split(" ").map((n) => n[0]).slice(0, 2).join("").toUpperCase();
-}
+
+
 
 function PersonCard({ name, role }: { name: string; role: string }) {
   return (
