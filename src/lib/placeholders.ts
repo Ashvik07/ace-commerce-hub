@@ -165,7 +165,19 @@ export const alumni = [
 // ---------------------------------------------------------------------------
 // Events — Annual Fest 2025 (MÉLANGE SPECTRUM) and other ACE events.
 // ---------------------------------------------------------------------------
-export const events = [
+type EventEntry = {
+  name: string;
+  description: string;
+  date?: string;
+  venue?: string;
+  organizers?: string;
+  resourcePerson?: string;
+  participants?: string;
+  winners?: string[];
+  note?: string;
+};
+
+export const events: EventEntry[] = [
   {
     name: "MÉLANGE SPECTRUM — Annual Fest 2025",
     description:
