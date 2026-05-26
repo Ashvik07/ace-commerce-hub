@@ -275,7 +275,9 @@ export const projects = [
 // ---------------------------------------------------------------------------
 // Resources — long-form articles published in the inaugural ACE magazine.
 // ---------------------------------------------------------------------------
-export const resources = [
+type ResourceEntry = { title: string; description: string; authors?: string; author?: string };
+
+export const resources: ResourceEntry[] = [
   {
     title: "Amul: The Brand That Never Melts Under Time",
     authors: "Aadyaa Arora, Anish Mittal",
