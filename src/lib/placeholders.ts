@@ -21,7 +21,7 @@ export const departments = [
   { name: "Finance", members: ["Atharv Bansal", "Manit Chopra", "Tejasvir"] },
   { name: "Marketing", members: ["Aadhya Manglani", "Nayanika Bajaj", "Sejal Nair"] },
   { name: "Entrepreneurship", members: ["Mysha Moin", "Yashika Oberoi", "Sharanya Singh"] },
-  { name: "Tech", members: ["Shagun Bhadwar", "Ashvik Gupta", "Salome Tripathy"] },
+  { name: "Tech", members: ["Ashvik Gupta", "Shagun Bhadwar", "Salome Tripathy"] },
   { name: "Media", members: ["Aarush Goyal", "Aaradhya Koslia", "Armaan Nagpal"] },
   { name: "Hawkeye", members: ["Anya Singh", "Falak Khanna", "Anika Nashier"] },
 ];
