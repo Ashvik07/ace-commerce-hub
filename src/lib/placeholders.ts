@@ -1,18 +1,39 @@
 // Centralized placeholder data — replace with real content later.
 
+// Apex Team — ACE (Alliance of Commerce and Entrepreneurship), DPS Dwarka.
+export const leadership = {
+  directors: [
+    { name: "Anirudh Goyal", role: "Director" },
+    { name: "Jai Sehgal", role: "Director" },
+    { name: "Drishti Jain", role: "Director" },
+  ],
+  jointDirectors: [
+    { name: "Ridhaan Malhotra", role: "Joint Director" },
+    { name: "Jeevansh Grover", role: "Joint Director" },
+  ],
+  deputyDirectors: [
+    { name: "Naysa Grover", role: "Deputy Director" },
+    { name: "Anoushka Nandini", role: "Deputy Director" },
+  ],
+};
+
+export const departments = [
+  { name: "Finance", members: ["Atharv Bansal", "Manit Chopra", "Tejasvir"] },
+  { name: "Marketing", members: ["Aadhya Manglani", "Nayanika Bajaj", "Sejal Nair"] },
+  { name: "Entrepreneurship", members: ["Mysha Moin", "Yashika Oberoi", "Sharanya Singh"] },
+  { name: "Tech", members: ["Shagun Bhadwar", "Ashvik Gupta", "Salome Tripathy"] },
+  { name: "Media", members: ["Aarush Goyal", "Aaradhya Koslia", "Armaan Nagpal"] },
+  { name: "Hawkeye", members: ["Anya Singh", "Falak Khanna", "Anika Nashier"] },
+];
+
+// Flat list (kept for any consumers expecting `members`).
 export const members = [
-  { name: "Aarav Mehta", role: "President", batch: "XII" },
-  { name: "Diya Kapoor", role: "Vice President", batch: "XII" },
-  { name: "Kabir Sharma", role: "Secretary", batch: "XI" },
-  { name: "Ananya Iyer", role: "Treasurer", batch: "XI" },
-  { name: "Vivaan Patel", role: "Head of Events", batch: "XII" },
-  { name: "Ishita Rao", role: "Head of Design", batch: "XI" },
-  { name: "Rohan Joshi", role: "Head of Outreach", batch: "XII" },
-  { name: "Saanvi Nair", role: "Head of Research", batch: "XI" },
-  { name: "Arjun Verma", role: "Editor — ACEit", batch: "XII" },
-  { name: "Myra Singh", role: "Social Media Lead", batch: "XI" },
-  { name: "Aryan Chawla", role: "Logistics Lead", batch: "XII" },
-  { name: "Tara Krishnan", role: "Member", batch: "X" },
+  ...leadership.directors,
+  ...leadership.jointDirectors,
+  ...leadership.deputyDirectors,
+  ...departments.flatMap((d) =>
+    d.members.map((name) => ({ name, role: `${d.name} Department` })),
+  ),
 ];
 
 export const directors = [
