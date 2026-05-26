@@ -3,6 +3,7 @@ import { Layout } from "@/components/site/Layout";
 import { EmailSignup } from "@/components/site/EmailSignup";
 import { ArrowRight } from "lucide-react";
 import logo from "@/assets/image-removebg-preview.png";
+import backgroundImage from "@/assets/image.png";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -20,8 +21,9 @@ export const Route = createFileRoute("/")({
 function Index() {
   return (
     <Layout>
-      <section className="border-b border-hairline">
-        <div className="container-page py-20 md:py-32">
+      <section className="border-b border-hairline relative overflow-hidden">
+        <div className="absolute inset-0 opacity-10" style={{ backgroundImage: `url(${backgroundImage})`, backgroundSize: 'cover', backgroundPosition: 'center' }} />
+        <div className="container-page py-20 md:py-32 relative z-10">
           <div className="mb-8">
             <img src={logo} alt="ACE" className="h-16 w-auto" />
           </div>
