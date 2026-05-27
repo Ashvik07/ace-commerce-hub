@@ -26,6 +26,29 @@ function About() {
         description="A student-led commerce club at Delhi Public School Dwarka."
       />
 
+      <section className="border-b border-hairline bg-surface">
+        <div className="container-page py-20 grid lg:grid-cols-2 gap-12">
+          <Reveal type="left">
+            <div className="eyebrow mb-4">Our Vision</div>
+            <h2 className="font-display text-3xl md:text-4xl font-semibold leading-tight mb-6">
+              Cultivating Tomorrow's Business Leaders
+            </h2>
+            <p className="text-lg text-muted-foreground leading-relaxed">
+              To cultivate the next generation of innovative business leaders who will shape the future of commerce and entrepreneurship through creativity, collaboration, and ethical leadership.
+            </p>
+          </Reveal>
+          <Reveal type="right">
+            <div className="eyebrow mb-4">Our Mission</div>
+            <h2 className="font-display text-3xl md:text-4xl font-semibold leading-tight mb-6">
+              Empowering Students for Success
+            </h2>
+            <p className="text-lg text-muted-foreground leading-relaxed">
+              We provide hands-on business experience, mentorship, and resources to help students develop entrepreneurial skills, financial literacy, and strategic thinking that will serve them throughout their careers.
+            </p>
+          </Reveal>
+        </div>
+      </section>
+
       <section className="container-page py-20 border-b border-hairline">
         <div className="grid lg:grid-cols-12 gap-12">
           <Reveal type="left" className="lg:col-span-4">
