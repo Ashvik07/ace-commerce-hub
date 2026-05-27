@@ -135,4 +135,38 @@
     opacity: 1;
     transform: none;
   }
+  .reveal-fade {
+    opacity: 0;
+    transition: opacity 0.8s ease-out;
+  }
+  .reveal-fade.in {
+    opacity: 1;
+  }
+  .reveal-scale {
+    opacity: 0;
+    transform: scale(0.95);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  }
+  .reveal-scale.in {
+    opacity: 1;
+    transform: scale(1);
+  }
+  .reveal-left {
+    opacity: 0;
+    transform: translateX(-24px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  }
+  .reveal-left.in {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  .reveal-right {
+    opacity: 0;
+    transform: translateX(24px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  }
+  .reveal-right.in {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }

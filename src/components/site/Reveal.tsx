@@ -1,6 +1,18 @@
 import { useEffect, useRef, ReactNode } from "react";
 
-export function Reveal({ children, delay = 0, className = "" }: { children: ReactNode; delay?: number; className?: string }) {
+type AnimationType = "fade" | "scale" | "left" | "right" | "default";
+
+export function Reveal({
+  children,
+  delay = 0,
+  className = "",
+  type = "default"
+}: {
+  children: ReactNode;
+  delay?: number;
+  className?: string;
+  type?: AnimationType;
+}) {
   const ref = useRef<HTMLDivElement>(null);
   useEffect(() => {
     const el = ref.current;
@@ -17,8 +29,11 @@ export function Reveal({ children, delay = 0, className = "" }: { children: Reac
     obs.observe(el);
     return () => obs.disconnect();
   }, [delay]);
+
+  const animationClass = type === "default" ? "reveal" : `reveal-${type}`;
+
   return (
-    <div ref={ref} className={`reveal ${className}`}>
+    <div ref={ref} className={`${animationClass} ${className}`}>
       {children}
     </div>
   );
