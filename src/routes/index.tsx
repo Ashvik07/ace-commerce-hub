@@ -51,6 +51,34 @@ function Index() {
         </div>
       </section>
 
+      <section className="border-b border-hairline">
+        <div className="container-page py-24">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8">
+            <Reveal type="scale" delay={0}>
+              <div className="text-center md:text-left">
+                <div className="font-display text-6xl md:text-7xl font-bold tracking-tight mb-3">6</div>
+                <div className="text-lg font-medium mb-2">Departments</div>
+                <p className="text-sm text-muted-foreground">Finance, Marketing, Entrepreneurship, Tech, Media, and Hawkeye — each driving ACE forward.</p>
+              </div>
+            </Reveal>
+            <Reveal type="scale" delay={100}>
+              <div className="text-center md:text-left">
+                <div className="font-display text-6xl md:text-7xl font-bold tracking-tight mb-3">50+</div>
+                <div className="text-lg font-medium mb-2">Members</div>
+                <p className="text-sm text-muted-foreground">A growing community of passionate students, entrepreneurs, and future business leaders.</p>
+              </div>
+            </Reveal>
+            <Reveal type="scale" delay={200}>
+              <div className="text-center md:text-left">
+                <div className="font-display text-6xl md:text-7xl font-bold tracking-tight mb-3">10+</div>
+                <div className="text-lg font-medium mb-2">Years of Excellence</div>
+                <p className="text-sm text-muted-foreground">A decade of fostering commerce education, innovation, and entrepreneurial spirit.</p>
+              </div>
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
       <section>
         <div className="container-page py-24 grid lg:grid-cols-12 gap-12">
           <Reveal type="left" className="lg:col-span-6">
