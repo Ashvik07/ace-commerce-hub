@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Layout } from "@/components/site/Layout";
 import { PageHero } from "@/components/site/PageHero";
+import { Reveal } from "@/components/site/Reveal";
 import { faculty } from "@/lib/placeholders";
 
 export const Route = createFileRoute("/faculty")({
@@ -25,14 +26,16 @@ function Faculty() {
         description="Messages from the Commerce Department faculty at DPS Dwarka."
       />
       <section className="container-page py-20 space-y-12">
-        {faculty.map((f) => (
-          <article key={f.name} className="grid md:grid-cols-12 gap-8 border-t border-hairline pt-10">
-            <header className="md:col-span-4">
-              <div className="font-display text-xl font-semibold">{f.name}</div>
-              <div className="text-sm text-muted-foreground mt-1">{f.role}</div>
-            </header>
-            <p className="md:col-span-8 text-muted-foreground leading-relaxed">{f.note}</p>
-          </article>
+        {faculty.map((f, i) => (
+          <Reveal key={f.name} type="default" delay={i * 100}>
+            <article className="grid md:grid-cols-12 gap-8 border-t border-hairline pt-10">
+              <header className="md:col-span-4">
+                <div className="font-display text-xl font-semibold">{f.name}</div>
+                <div className="text-sm text-muted-foreground mt-1">{f.role}</div>
+              </header>
+              <p className="md:col-span-8 text-muted-foreground leading-relaxed">{f.note}</p>
+            </article>
+          </Reveal>
         ))}
       </section>
     </Layout>

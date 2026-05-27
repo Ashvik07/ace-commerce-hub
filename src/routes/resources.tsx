@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Layout } from "@/components/site/Layout";
 import { PageHero } from "@/components/site/PageHero";
+import { Reveal } from "@/components/site/Reveal";
 import { resources } from "@/lib/placeholders";
 
 export const Route = createFileRoute("/resources")({
@@ -26,7 +27,8 @@ function Resources() {
       />
       <section className="container-page py-20 space-y-px">
         {resources.map((r, i) => (
-          <article key={r.title} className="grid md:grid-cols-12 gap-6 py-10 border-b border-hairline items-start">
+          <Reveal key={r.title} type="default" delay={i * 100}>
+            <article className="grid md:grid-cols-12 gap-6 py-10 border-b border-hairline items-start">
             <div className="md:col-span-1 text-sm tabular-nums text-muted-foreground">
               {String(i + 1).padStart(2, "0")}
             </div>
@@ -37,7 +39,8 @@ function Resources() {
               </div>
             </div>
             <p className="md:col-span-7 text-muted-foreground leading-relaxed">{r.description}</p>
-          </article>
+            </article>
+          </Reveal>
         ))}
       </section>
     </Layout>

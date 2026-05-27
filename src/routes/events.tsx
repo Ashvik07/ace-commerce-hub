@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Layout } from "@/components/site/Layout";
 import { PageHero } from "@/components/site/PageHero";
+import { Reveal } from "@/components/site/Reveal";
 import { events, accolades } from "@/lib/placeholders";
 
 export const Route = createFileRoute("/events")({
@@ -26,10 +27,11 @@ function Events() {
       />
 
       <section className="container-page py-20">
-        <div className="eyebrow mb-6">Events</div>
+        <Reveal type="fade" className="eyebrow mb-6">Events</Reveal>
         <div className="space-y-10">
-          {events.map((e) => (
-            <article key={e.name} className="grid md:grid-cols-12 gap-6 py-8 border-t border-hairline">
+          {events.map((e, i) => (
+            <Reveal key={e.name} type="default" delay={i * 100}>
+              <article className="grid md:grid-cols-12 gap-6 py-8 border-t border-hairline">
               <div className="md:col-span-4">
                 <h3 className="font-display text-xl font-semibold leading-tight">{e.name}</h3>
                 {e.date && <div className="text-sm text-muted-foreground mt-2">{e.date}</div>}
@@ -64,19 +66,20 @@ function Events() {
                 )}
                 {e.note && <p className="text-sm text-muted-foreground italic leading-relaxed">{e.note}</p>}
               </div>
-            </article>
+              </article>
+            </Reveal>
           ))}
         </div>
       </section>
 
       <section className="border-t border-hairline">
         <div className="container-page py-20">
-          <div className="mb-10 max-w-2xl">
+          <Reveal type="fade" className="mb-10 max-w-2xl">
             <div className="eyebrow mb-3">Accolades of the Club</div>
             <h2 className="font-display text-3xl md:text-4xl font-semibold leading-tight">
               Where we placed.
             </h2>
-          </div>
+          </Reveal>
 
           <div className="border-t border-hairline divide-y divide-hairline">
             <div className="grid md:grid-cols-12 gap-4 py-3 text-xs uppercase tracking-widest text-muted-foreground">

@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Layout } from "@/components/site/Layout";
 import { PageHero } from "@/components/site/PageHero";
+import { Reveal } from "@/components/site/Reveal";
 import { leadership, departments } from "@/lib/placeholders";
 
 export const Route = createFileRoute("/members")({
@@ -21,10 +22,12 @@ export const Route = createFileRoute("/members")({
 
 function PersonCard({ name, role }: { name: string; role: string }) {
   return (
-    <article className="bg-background p-6">
-      <div className="font-display font-semibold text-lg leading-tight">{name}</div>
-      <div className="text-sm text-muted-foreground mt-1">{role}</div>
-    </article>
+    <Reveal type="scale">
+      <article className="bg-background p-6">
+        <div className="font-display font-semibold text-lg leading-tight">{name}</div>
+        <div className="text-sm text-muted-foreground mt-1">{role}</div>
+      </article>
+    </Reveal>
   );
 }
 
@@ -56,12 +59,14 @@ function Members() {
       />
 
       <section className="container-page py-20">
-        <header className="mb-12 max-w-2xl">
-          <div className="text-xs uppercase tracking-widest text-muted-foreground mb-3">Leadership</div>
-          <h2 className="font-display text-3xl md:text-4xl font-semibold leading-tight">
-            Directors, Joint Directors, and Deputy Directors.
-          </h2>
-        </header>
+        <Reveal type="fade" className="mb-12 max-w-2xl">
+          <header>
+            <div className="text-xs uppercase tracking-widest text-muted-foreground mb-3">Leadership</div>
+            <h2 className="font-display text-3xl md:text-4xl font-semibold leading-tight">
+              Directors, Joint Directors, and Deputy Directors.
+            </h2>
+          </header>
+        </Reveal>
 
         <Tier label="Directors" people={leadership.directors} />
         <Tier label="Joint Directors" people={leadership.jointDirectors} />
@@ -69,15 +74,17 @@ function Members() {
       </section>
 
       <section className="container-page pb-24">
-        <header className="mb-12 max-w-2xl">
-          <div className="text-xs uppercase tracking-widest text-muted-foreground mb-3">Departments</div>
-          <h2 className="font-display text-3xl md:text-4xl font-semibold leading-tight">
-            Six departments, eighteen members.
-          </h2>
-          <p className="mt-3 text-muted-foreground">
-            Finance, Marketing, Entrepreneurship, Tech, Media, and Hawkeye — each team owns a slice of how ACE runs.
-          </p>
-        </header>
+        <Reveal type="fade" className="mb-12 max-w-2xl">
+          <header>
+            <div className="text-xs uppercase tracking-widest text-muted-foreground mb-3">Departments</div>
+            <h2 className="font-display text-3xl md:text-4xl font-semibold leading-tight">
+              Six departments, eighteen members.
+            </h2>
+            <p className="mt-3 text-muted-foreground">
+              Finance, Marketing, Entrepreneurship, Tech, Media, and Hawkeye — each team owns a slice of how ACE runs.
+            </p>
+          </header>
+        </Reveal>
 
         <div className="space-y-16">
           {departments.map((dept) => (

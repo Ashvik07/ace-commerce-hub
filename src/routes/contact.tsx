@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { Layout } from "@/components/site/Layout";
 import { PageHero } from "@/components/site/PageHero";
+import { Reveal } from "@/components/site/Reveal";
 import { Mail, MapPin, Instagram, Linkedin } from "lucide-react";
 import { toast } from "sonner";
 import { z } from "zod";
@@ -50,7 +51,7 @@ function Contact() {
         description="Whether you want to host a joint event, pitch a column for ACEit, or just say hello — drop us a note."
       />
       <section className="container-page py-20 grid lg:grid-cols-12 gap-16">
-        <div className="lg:col-span-5 space-y-8">
+        <Reveal type="left" className="lg:col-span-5 space-y-8">
           <div>
             <div className="eyebrow mb-2">Email</div>
             <a href="mailto:hello@ace-club.school" className="inline-flex items-center gap-2 font-display text-xl hover:underline">
@@ -79,9 +80,10 @@ function Contact() {
               </a>
             </div>
           </div>
-        </div>
+        </Reveal>
 
-        <form onSubmit={onSubmit} className="lg:col-span-7 space-y-5">
+        <Reveal type="right" className="lg:col-span-7">
+          <form onSubmit={onSubmit} className="space-y-5">
           <div>
             <label className="eyebrow block mb-2">Your name</label>
             <input
@@ -118,7 +120,8 @@ function Contact() {
           <button type="submit" className="h-12 px-8 bg-foreground text-background text-sm font-medium hover:opacity-90 transition-opacity">
             Send message
           </button>
-        </form>
+          </form>
+        </Reveal>
       </section>
     </Layout>
   );
